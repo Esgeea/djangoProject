@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} List of trainers {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 gy-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Filters</h3>
+                    </div>
+                    <form method="get">
+                        <div class="card-body">
+                            {{ filters }}
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-outline-success">Search</button>
+                            <a href="{% url 'list-trainers' %}" class="btn btn-outline-danger">Reset</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    {% if all_trainers %}
+                        {% for trainer in all_trainers %}
+                            <div class="col-md-3 gy-5">
+                                <div class="card" >
+                                    {% if trainer.profile %}
+                                        <img src="{{ trainer.profile.url }}" class="card-img-top" alt="imagine profil" height="250">
+                                    {% else %}
+                                        <img src="{% static 'images/img_1.png' %}" class="card-img-top" alt="imagine profil" height="250">
+                                    {% endif %}
+                                      <div class="card-body">
+                                        <h5 class="card-title">{{ trainer }}</h5>
+                                          <div style="overflow-y: auto; height: 100px">
+                                            <p class="card-text">
+                                                Course: {{ trainer.course }} <br>
+                                                Email: {{ trainer.email }} <br>
+                                                Department: {{ trainer.department|title }} <br>
+                                                Active: {{ trainer.active }} <br>
+                                            </p>
+                                          </div>
+                                        <div class="dropdown">
+                                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            More actions
+                                          </button>
+                                          <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{% url 'update-trainer' trainer.id %}">Update</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'delete-trainer' trainer.id %}">Delete</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'details-trainer' trainer.id %}">Details</a></li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center">
+                            No data available
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block title %} Students history {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-danger">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Message</th>              
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for history_item in history_student %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ history_item.message }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{%  extends 'base.html' %}
+
+{% block title %} Delete - {{ student }} {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 gy-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center"> Delete - {{ student }}</h3>
+                    </div>
+                    <form method="post">
+
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <p><strong>Full name: </strong>{{ student  }}</p>
+                            <p><strong>Email: </strong>{{ student.email  }}</p>
+                            <p><strong>Trainer: </strong>{{ student.trainer  }}</p>
+                            <p><strong>Course: </strong>{{ student.trainer.course  }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-danger">DELETE</button>
+                            <a href="{% url 'list-students' %}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

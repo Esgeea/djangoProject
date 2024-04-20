@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Trainer Details{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3 gy-5">
+            
+            <div class="card">
+              <h5 class="card-header">View Details</h5>
+              <div class="card-body">
+                <h5 class="card-title">{{ trainer }}</h5>
+                <p class="card-text">Email: {{ trainer.email }}</p>
+                <p class="card-text">Department: {{ trainer.department }}</p>
+                <a href="{% url 'list-trainers' %}" class="btn btn-secondary">Cancel</a>
+              </div>
+               <div class="card-footer text-body-secondary">
+                   Created at: {{ trainer.created_at|date:"d-m-Y" }} / Updated at: {{ trainer.updated_at|date:"d-m-Y" }}
+               </div>  
+            </div>
+        </div>
+    </div>
+{% endblock %}

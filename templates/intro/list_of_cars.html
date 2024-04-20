@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{%  block title %}List of cars{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <table class="table table-success table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name of brand</th>
+                            <th>Model</th>
+                            <th>Color</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for car in all_cars %}
+            {#              {% if car.year == 2023 %}#}
+                            <tr>
+                                <td>{{ car.name_of_brand }}</td>
+                                <td>{{ car.model }}</td>
+                                <td>{{ car.color }}</td>
+                                <td>{{ car.year }}</td>
+                            </tr>
+            {#              {% endif %}#}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'list-songs' %}" class="btn btn-primary">Go to list of songs</a>
+            </div>
+        </div>
+    </div>
+{#        #}
+{#        #}
+{#            <div class="col-md-4">#}
+{#                <table class="table table-success table-striped">#}
+{#                    <thead>#}
+{#                        <tr>#}
+{#                            <th>Name of brand</th>#}
+{#                            <th>Model</th>#}
+{#                            <th>Color</th>#}
+{#                            <th>Year</th>#}
+{#                        </tr>#}
+{#                    </thead>#}
+{#                    <tbody>#}
+{#                        {% for car in all_cars %}#}
+            {#              {% if car.year == 2023 %}#}
+{#                            <tr>#}
+{#                                <td>{{ car.name_of_brand }}</td>#}
+{#                                <td>{{ car.model }}</td>#}
+{#                                <td>{{ car.color }}</td>#}
+{#                                <td>{{ car.year }}</td>#}
+{#                            </tr>#}
+            {#              {% endif %}#}
+{#                        {% endfor %}#}
+{#                    </tbody>#}
+{#                </table>#}
+{#            </div>#}
+{#            <div class="col-md-4">#}
+{#                <br>#}
+{#                <a href="{% url 'list-songs' %}" class="btn btn-primary">Go to list of songs</a>#}
+{#            </div>#}
+{#            <div class="col-md-4">#}
+{#                <h1>Cars</h1>#}
+{#            </div>   #}
+{#        </div>#}
+{#    </div>#}
+{% endblock %}
